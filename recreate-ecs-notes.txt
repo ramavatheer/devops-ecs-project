@@ -1,0 +1,7 @@
+Cluster: ecsCluster
+Service: devops-service
+Traefik image: traefik:v3
+Backend image: ramavatheer/devops-app:latest
+Network mode: bridge
+Port mapping: 80:80 (traefik)
+Autoscale script: cpu-autoscale.sh
