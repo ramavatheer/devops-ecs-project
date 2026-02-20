@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "DevOps ECS Project Running Successfully!"
+    return f"Handled by container: {socket.gethostname()}"
 
 @app.route("/health")
 def health():
