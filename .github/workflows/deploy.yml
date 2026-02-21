@@ -1,19 +1,31 @@
-name: Build and Push Docker Image
+name: Deploy to ECS
 
 on:
   push:
     branches:
       - main
 
+env:
+  CLUSTER_NAME: ecsCluster
+  SERVICE_NAME: devops-service
+  TASK_DEFINITION: devops-app
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Login to DockerHub
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -21,8 +33,12 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ramavatheer/devops-app:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/devops-app:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
 
-      - name: Push Docker Image
+      - name: Force new ECS deployment
         run: |
-          docker push ramavatheer/devops-app:latest
+          aws ecs update-service \
+            --cluster $CLUSTER_NAME \
+            --service $SERVICE_NAME \
+            --force-new-deployment

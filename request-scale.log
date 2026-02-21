@@ -1,0 +1,124 @@
+2026-02-21 06:20:02 - Requests/min: 1 | Containers: 1 | Time since last scale: 1771654802s
+2026-02-21 06:20:02 - No scaling action needed
+2026-02-21 06:21:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771654862s
+2026-02-21 06:21:02 - No scaling action needed
+2026-02-21 06:22:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771654922s
+2026-02-21 06:22:02 - No scaling action needed
+2026-02-21 06:23:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771654982s
+2026-02-21 06:23:02 - No scaling action needed
+2026-02-21 06:24:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655043s
+2026-02-21 06:24:03 - No scaling action needed
+2026-02-21 06:25:03 - Requests/min: 1 | Containers: 1 | Time since last scale: 1771655103s
+2026-02-21 06:25:03 - No scaling action needed
+2026-02-21 06:26:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655163s
+2026-02-21 06:26:03 - No scaling action needed
+2026-02-21 06:27:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655222s
+2026-02-21 06:27:02 - No scaling action needed
+2026-02-21 06:28:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655282s
+2026-02-21 06:28:02 - No scaling action needed
+2026-02-21 06:29:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655342s
+2026-02-21 06:29:02 - No scaling action needed
+2026-02-21 06:30:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655403s
+2026-02-21 06:30:03 - No scaling action needed
+2026-02-21 06:31:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655463s
+2026-02-21 06:31:03 - No scaling action needed
+2026-02-21 06:32:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655522s
+2026-02-21 06:32:02 - No scaling action needed
+2026-02-21 06:33:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655582s
+2026-02-21 06:33:02 - No scaling action needed
+2026-02-21 06:34:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655642s
+2026-02-21 06:34:02 - No scaling action needed
+2026-02-21 06:35:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655703s
+2026-02-21 06:35:03 - No scaling action needed
+2026-02-21 06:36:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655763s
+2026-02-21 06:36:03 - No scaling action needed
+2026-02-21 06:37:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655823s
+2026-02-21 06:37:03 - No scaling action needed
+2026-02-21 06:38:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655883s
+2026-02-21 06:38:03 - No scaling action needed
+2026-02-21 06:39:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771655943s
+2026-02-21 06:39:03 - No scaling action needed
+2026-02-21 06:40:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656003s
+2026-02-21 06:40:03 - No scaling action needed
+2026-02-21 06:41:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656062s
+2026-02-21 06:41:02 - No scaling action needed
+2026-02-21 06:42:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656123s
+2026-02-21 06:42:03 - No scaling action needed
+2026-02-21 06:43:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656183s
+2026-02-21 06:43:03 - No scaling action needed
+2026-02-21 06:44:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656243s
+2026-02-21 06:44:03 - No scaling action needed
+2026-02-21 06:45:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656303s
+2026-02-21 06:45:03 - No scaling action needed
+2026-02-21 06:46:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656363s
+2026-02-21 06:46:03 - No scaling action needed
+2026-02-21 06:47:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656423s
+2026-02-21 06:47:03 - No scaling action needed
+2026-02-21 06:48:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656483s
+2026-02-21 06:48:03 - No scaling action needed
+2026-02-21 06:49:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656543s
+2026-02-21 06:49:03 - No scaling action needed
+2026-02-21 06:50:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656603s
+2026-02-21 06:50:03 - No scaling action needed
+2026-02-21 06:51:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656663s
+2026-02-21 06:51:03 - No scaling action needed
+2026-02-21 06:52:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656723s
+2026-02-21 06:52:03 - No scaling action needed
+2026-02-21 06:53:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656782s
+2026-02-21 06:53:02 - No scaling action needed
+2026-02-21 06:54:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656843s
+2026-02-21 06:54:03 - No scaling action needed
+2026-02-21 06:55:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656902s
+2026-02-21 06:55:02 - No scaling action needed
+2026-02-21 06:56:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771656963s
+2026-02-21 06:56:03 - No scaling action needed
+2026-02-21 06:57:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657023s
+2026-02-21 06:57:03 - No scaling action needed
+2026-02-21 06:58:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657083s
+2026-02-21 06:58:03 - No scaling action needed
+2026-02-21 06:59:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657143s
+2026-02-21 06:59:03 - No scaling action needed
+2026-02-21 07:00:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657203s
+2026-02-21 07:00:03 - No scaling action needed
+2026-02-21 07:01:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657263s
+2026-02-21 07:01:03 - No scaling action needed
+2026-02-21 07:02:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657322s
+2026-02-21 07:02:02 - No scaling action needed
+2026-02-21 07:03:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657382s
+2026-02-21 07:03:02 - No scaling action needed
+2026-02-21 07:04:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657442s
+2026-02-21 07:04:02 - No scaling action needed
+2026-02-21 07:05:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657503s
+2026-02-21 07:05:03 - No scaling action needed
+2026-02-21 07:06:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657563s
+2026-02-21 07:06:03 - No scaling action needed
+2026-02-21 07:07:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657623s
+2026-02-21 07:07:03 - No scaling action needed
+2026-02-21 07:08:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657683s
+2026-02-21 07:08:03 - No scaling action needed
+2026-02-21 07:09:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657743s
+2026-02-21 07:09:03 - No scaling action needed
+2026-02-21 07:10:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657803s
+2026-02-21 07:10:03 - No scaling action needed
+2026-02-21 07:11:03 - Requests/min: 1 | Containers: 1 | Time since last scale: 1771657863s
+2026-02-21 07:11:03 - No scaling action needed
+2026-02-21 07:12:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657923s
+2026-02-21 07:12:03 - No scaling action needed
+2026-02-21 07:13:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771657983s
+2026-02-21 07:13:03 - No scaling action needed
+2026-02-21 07:14:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658043s
+2026-02-21 07:14:03 - No scaling action needed
+2026-02-21 07:15:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658102s
+2026-02-21 07:15:02 - No scaling action needed
+2026-02-21 07:16:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658162s
+2026-02-21 07:16:02 - No scaling action needed
+2026-02-21 07:17:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658222s
+2026-02-21 07:17:02 - No scaling action needed
+2026-02-21 07:18:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658282s
+2026-02-21 07:18:02 - No scaling action needed
+2026-02-21 07:19:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658342s
+2026-02-21 07:19:02 - No scaling action needed
+2026-02-21 07:20:02 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658402s
+2026-02-21 07:20:02 - No scaling action needed
+2026-02-21 07:21:03 - Requests/min: 0 | Containers: 1 | Time since last scale: 1771658463s
+2026-02-21 07:21:03 - No scaling action needed
