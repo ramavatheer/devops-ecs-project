@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps ECS Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1f2937;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .status {
+            font-weight: bold;
+            color: green;
+        }
+
+        .button {
+            padding: 10px 15px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #1e40af;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🚀 DevOps ECS Application Dashboard</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Container Information</h2>
+        <p><strong>Hostname:</strong> {{ hostname }}</p>
+        <p><strong>Requests Served:</strong> {{ request_count }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Health Status</h2>
+        <p class="status">Application is Healthy</p>
+        <a href="/health">Check Health API</a>
+    </div>
+
+    <div class="card">
+        <h2>API Endpoints</h2>
+        <ul>
+            <li><a href="/api/info">/api/info</a></li>
+            <li><a href="/api/db">/api/db</a></li>
+            <li><a href="/api/load">/api/load</a></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Load Testing</h2>
+        <button class="button" onclick="simulateLoad()">Simulate Load</button>
+        <p id="loadResult"></p>
+    </div>
+
+</div>
+
+<div class="footer">
+    Running on AWS ECS + Traefik Reverse Proxy
+</div>
+
+<script>
+function simulateLoad() {
+    fetch('/api/load')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('loadResult').innerText = data.message;
+        });
+}
+</script>
+
+</body>
+</html>
