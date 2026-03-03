@@ -54,6 +54,7 @@ def home():
     return render_template(
         "index.html",
         hostname=socket.gethostname(),
+	"CI/CD check"
         request_count=REQUEST_COUNT
     )
 
