@@ -44,3 +44,23 @@ jobs:
             --cluster ${{ secrets.ECS_CLUSTER }} \
             --service ${{ secrets.ECS_SERVICE }} \
             --force-new-deployment
+	  aws ecs update-service \
+	    --cluster ${{ secrets.ECS_CLUSTER }} \
+            --service redis-service \
+            --force-new-deployment
+	  aws ecs update-service \
+    	    --cluster ${{ secrets.ECS_CLUSTER }} \
+   	    --service postgres-service \
+      	    --force-new-deployment
+	  aws ecs update-service \
+  	    --cluster ${{ secrets.ECS_CLUSTER }} \
+  	    --service traefik-task-service \
+  	    --force-new-deployment
+          aws ecs update-service \
+            --cluster ${{ secrets.ECS_CLUSTER }} \
+      	    --service prometheus-grafana-service \
+            --force-new-deployment
+	  aws ecs update-service \
+  	    --cluster ${{ secrets.ECS_CLUSTER }} \
+  	    --service Exporter-service \
+   	    --force-new-deployment
