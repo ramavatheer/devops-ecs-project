@@ -1,0 +1,1 @@
+*/2 * * * * /scripts/scale-check.sh >> /logs/autoscale.log 2>&1
