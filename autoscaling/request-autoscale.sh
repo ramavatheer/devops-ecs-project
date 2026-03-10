@@ -1,94 +1,83 @@
 #!/bin/bash
 
-CLUSTER="ecsCluster"
-SERVICE="devops-service"
 
-MIN_COUNT=1
-MAX_COUNT=4
+PROMETHEUS_URL="http://13.233.161.113:9090"
+CLUSTER_NAME="ecsCluster"
+SERVICE_NAME="devops-service"
 
-SCALE_UP_THRESHOLD=50
-SCALE_DOWN_THRESHOLD=10
+MAX_CONTAINERS=5
+MIN_CONTAINERS=1
 
-COOLDOWN_SECONDS=180
-STATE_FILE="/home/ec2-user/devops-ecs-project/scale_state.txt"
-LOG_FILE="/home/ec2-user/devops-ecs-project/request-scale.log"
+SCALE_UP_THRESHOLD=5
+SCALE_DOWN_THRESHOLD=1
 
-METRICS_URL="http://localhost:8080/metrics"
+echo "-----------------------------"
+echo "Autoscale check started at $(date)"
 
-timestamp() {
-  date +"%Y-%m-%d %H:%M:%S"
-}
 
-log() {
-  echo "$(timestamp) - $1" >> $LOG_FILE
-}
+REQUEST_RATE=$(curl -s -g "$PROMETHEUS_URL/api/v1/query?query=sum(rate(traefik_service_requests_total[1m]))" \
+| jq -r '.data.result[0].value[1] // "0"')
 
-get_requests() {
-  curl -s $METRICS_URL | \
-  grep traefik_router_requests_total | \
-  grep -v '^#' | \
-  awk '{sum+=$2} END {print sum}'
-}
-
-REQ1=$(get_requests)
-sleep 60
-REQ2=$(get_requests)
-
-if [ -z "$REQ1" ] || [ -z "$REQ2" ]; then
-  log "Metrics not available"
-  exit 1
+if [ -z "$REQUEST_RATE" ]; then
+    REQUEST_RATE=0
 fi
 
-REQUESTS_PER_MIN=$((REQ2 - REQ1))
+echo "Current Request Rate: $REQUEST_RATE req/sec"
+
 
 CURRENT_COUNT=$(aws ecs describe-services \
-  --cluster $CLUSTER \
-  --services $SERVICE \
-  --query "services[0].runningCount" \
-  --output text)
+--cluster $CLUSTER_NAME \
+--services $SERVICE_NAME \
+--query "services[0].desiredCount" \
+--output text)
 
-NOW=$(date +%s)
-LAST_SCALE_TIME=0
+echo "Current ECS service size: $CURRENT_COUNT"
 
-if [ -f "$STATE_FILE" ]; then
-  LAST_SCALE_TIME=$(cat $STATE_FILE)
+if (( $(echo "$REQUEST_RATE > $SCALE_UP_THRESHOLD" | bc -l) )); then
+
+    NEW_COUNT=$((CURRENT_COUNT+1))
+
+    if [ "$NEW_COUNT" -gt "$MAX_CONTAINERS" ]; then
+        NEW_COUNT=$MAX_CONTAINERS
+    fi
+
+    if [ "$NEW_COUNT" != "$CURRENT_COUNT" ]; then
+
+        echo "Scaling UP service to $NEW_COUNT containers"
+
+        aws ecs update-service \
+        --cluster $CLUSTER_NAME \
+        --service $SERVICE_NAME \
+        --desired-count $NEW_COUNT
+
+    else
+        echo "Already at max container limit"
+    fi
 fi
 
-TIME_DIFF=$((NOW - LAST_SCALE_TIME))
 
-log "Requests/min: $REQUESTS_PER_MIN | Containers: $CURRENT_COUNT | Time since last scale: ${TIME_DIFF}s"
+# SCALE DOWN
+if (( $(echo "$REQUEST_RATE < $SCALE_DOWN_THRESHOLD" | bc -l) )); then
 
-# ===== COOLDOWN CHECK =====
-if [ "$TIME_DIFF" -lt "$COOLDOWN_SECONDS" ]; then
-  log "Cooldown active. No scaling."
-  exit 0
+    NEW_COUNT=$((CURRENT_COUNT-1))
+
+    if [ "$NEW_COUNT" -lt "$MIN_CONTAINERS" ]; then
+        NEW_COUNT=$MIN_CONTAINERS
+    fi
+
+    if [ "$NEW_COUNT" != "$CURRENT_COUNT" ]; then
+
+        echo "Scaling DOWN service to $NEW_COUNT containers"
+
+        aws ecs update-service \
+        --cluster $CLUSTER_NAME \
+        --service $SERVICE_NAME \
+        --desired-count $NEW_COUNT
+
+    else
+        echo "Already at minimum container limit"
+    fi
 fi
 
-# ===== SCALING LOGIC =====
-if [ "$REQUESTS_PER_MIN" -gt "$SCALE_UP_THRESHOLD" ] && [ "$CURRENT_COUNT" -lt "$MAX_COUNT" ]; then
-
-  NEW_COUNT=$((CURRENT_COUNT + 1))
-
-  aws ecs update-service \
-    --cluster $CLUSTER \
-    --service $SERVICE \
-    --desired-count $NEW_COUNT > /dev/null 2>&1
-
-  echo $NOW > $STATE_FILE
-  log "Scaling UP → $NEW_COUNT"
-
-elif [ "$REQUESTS_PER_MIN" -lt "$SCALE_DOWN_THRESHOLD" ] && [ "$CURRENT_COUNT" -gt "$MIN_COUNT" ]; then
-
-  NEW_COUNT=$((CURRENT_COUNT - 1))
-
-  aws ecs update-service \
-    --cluster $CLUSTER \
-    --service $SERVICE \
-    --desired-count $NEW_COUNT > /dev/null 2>&1
-
-  echo $NOW > $STATE_FILE
-  log "Scaling DOWN → $NEW_COUNT"
-
-else
-  log "No scaling action needed"
-fi
+echo "Autoscale check finished"
+echo "-----------------------------"
